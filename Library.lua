@@ -6019,9 +6019,11 @@ TabButton.MouseEnter:Connect(function()
 		local tabActiveTween = Library._TI_TabActive;
 
 		function Tab:ShowTab()
-			for _, Tab in next, Window.Tabs do
-				Tab:HideTab();
-			end;
+    for _, OtherTab in next, Window.Tabs do
+        if OtherTab ~= Tab then
+            OtherTab:HideTab();
+        end;
+    end;
 
 			TweenService:Create(Blocker, tabActiveTween, {
 				BackgroundTransparency = 0;
